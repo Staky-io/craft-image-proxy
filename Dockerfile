@@ -21,7 +21,7 @@ COPY --from=build /app/imageproxy /app/imageproxy
 
 USER go
 
-CMD ["-addr", "0.0.0.0:8080"]
+CMD ["-addr", "0.0.0.0:8080", "-cache", "s3://eu-central-1/elasticbeanstalk-eu-central-1-657659270578/cache/"]
 ENTRYPOINT ["/app/imageproxy"]
 
 EXPOSE 8080
