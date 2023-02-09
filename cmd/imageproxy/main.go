@@ -7,7 +7,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
@@ -90,15 +89,20 @@ func main() {
 	p.Verbose = *verbose
 	p.UserAgent = *userAgent
 
-	server := &http.Server{
-		Addr:    *addr,
-		Handler: p,
-	}
-
 	r := mux.NewRouter().SkipClean(true).UseEncodedPath()
 	r.PathPrefix("/").Handler(p)
+
+	server := &http.Server{
+		Addr:    *addr,
+		Handler: r,
+
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 30 * time.Second,
+		IdleTimeout:  120 * time.Second,
+	}
+
 	fmt.Printf("imageproxy listening on %s\n", server.Addr)
-	log.Fatal(http.ListenAndServe(*addr, r))
+	log.Fatal(server.ListenAndServe())
 }
 
 type signatureKeyList [][]byte
@@ -113,7 +117,7 @@ func (skl *signatureKeyList) Set(value string) error {
 		if strings.HasPrefix(v, "@") {
 			file := strings.TrimPrefix(v, "@")
 			var err error
-			key, err = ioutil.ReadFile(file)
+			key, err = os.ReadFile(file)
 			if err != nil {
 				log.Fatalf("error reading signature file: %v", err)
 			}
