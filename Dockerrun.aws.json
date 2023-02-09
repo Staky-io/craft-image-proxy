@@ -1,7 +1,0 @@
-{
-  "AWSEBDockerrunVersion": "1",
-  "Logging": "/tmp/image-proxy-logs",
-  "Image": {
-  	"Update": "false"
-  }
-}
