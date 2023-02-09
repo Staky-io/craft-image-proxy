@@ -20,11 +20,9 @@ site (read more in [this post][]).  But you can also enable request signing and
 use it as an SSL proxy for remote images, similar to [atmos/camo][] but with
 additional image adjustment options.
 
-I aim to keep imageproxy compatible with the two [most recent major go
-releases][]. I also keep track of the minimum go version that still works
-(currently go1.13 with modules enabled), but that might change at any time. You
-can see the go versions that are tested against in
-[.github/workflows/tests.yml][].
+I aim to keep imageproxy compatible with the two [most recent major go releases][].
+I also keep track of the minimum go version that still works (currently go1.17), but that might change at any time.
+You can see the go versions that are tested against in [.github/workflows/tests.yml][].
 
 [this post]: https://willnorris.com/2014/01/a-self-hosted-alternative-to-jetpacks-photon-service
 [atmos/camo]: https://github.com/atmos/camo
@@ -61,20 +59,20 @@ strings.
 The following live examples demonstrate setting different options on [this
 source image][small-things], which measures 1024 by 678 pixels.
 
-[small-things]: https://willnorris.com/2013/12/small-things.jpg
+[small-things]: https://willnorris.com/images/imageproxy/small-things.jpg
 
 Options | Meaning                                  | Image
 --------|------------------------------------------|------
-200x    | 200px wide, proportional height          | <a href="https://imageproxy.willnorris.com/200x/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/200x/https://willnorris.com/2013/12/small-things.jpg" alt="200x"></a>
-x0.15   | 15% original height, proportional width  | <a href="https://imageproxy.willnorris.com/x0.15/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/x0.15/https://willnorris.com/2013/12/small-things.jpg" alt="x0.15"></a>
-100x150 | 100 by 150 pixels, cropping as needed    | <a href="https://imageproxy.willnorris.com/100x150/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/100x150/https://willnorris.com/2013/12/small-things.jpg" alt="100x150"></a>
-100     | 100px square, cropping as needed         | <a href="https://imageproxy.willnorris.com/100/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/100/https://willnorris.com/2013/12/small-things.jpg" alt="100"></a>
-150,fit | scale to fit 150px square, no cropping   | <a href="https://imageproxy.willnorris.com/150,fit/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/150,fit/https://willnorris.com/2013/12/small-things.jpg" alt="150,fit"></a>
-100,r90 | 100px square, rotated 90 degrees         | <a href="https://imageproxy.willnorris.com/100,r90/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/100,r90/https://willnorris.com/2013/12/small-things.jpg" alt="100,r90"></a>
-100,fv,fh | 100px square, flipped horizontal and vertical | <a href="https://imageproxy.willnorris.com/100,fv,fh/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/100,fv,fh/https://willnorris.com/2013/12/small-things.jpg" alt="100,fv,fh"></a>
-200x,q60 | 200px wide, proportional height, 60% quality | <a href="https://imageproxy.willnorris.com/200x,q60/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/200x,q60/https://willnorris.com/2013/12/small-things.jpg" alt="200x,q60"></a>
-200x,png | 200px wide, converted to PNG format | <a href="https://imageproxy.willnorris.com/200x,png/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/200x,png/https://willnorris.com/2013/12/small-things.jpg" alt="200x,png"></a>
-cx175,cw400,ch300,100x | crop to 400x300px starting at (175,0), scale to 100px wide | <a href="https://imageproxy.willnorris.com/cx175,cw400,ch300,100x/https://willnorris.com/2013/12/small-things.jpg"><img src="https://imageproxy.willnorris.com/cx175,cw400,ch300,100x/https://willnorris.com/2013/12/small-things.jpg" alt="cx175,cw400,ch300,100x"></a>
+200x    | 200px wide, proportional height          | <a href="https://imageproxy.willnorris.com/200x/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/200x/https://willnorris.com/images/imageproxy/small-things.jpg" alt="200x"></a>
+x0.15   | 15% original height, proportional width  | <a href="https://imageproxy.willnorris.com/x0.15/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/x0.15/https://willnorris.com/images/imageproxy/small-things.jpg" alt="x0.15"></a>
+100x150 | 100 by 150 pixels, cropping as needed    | <a href="https://imageproxy.willnorris.com/100x150/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/100x150/https://willnorris.com/images/imageproxy/small-things.jpg" alt="100x150"></a>
+100     | 100px square, cropping as needed         | <a href="https://imageproxy.willnorris.com/100/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/100/https://willnorris.com/images/imageproxy/small-things.jpg" alt="100"></a>
+150,fit | scale to fit 150px square, no cropping   | <a href="https://imageproxy.willnorris.com/150,fit/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/150,fit/https://willnorris.com/images/imageproxy/small-things.jpg" alt="150,fit"></a>
+100,r90 | 100px square, rotated 90 degrees         | <a href="https://imageproxy.willnorris.com/100,r90/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/100,r90/https://willnorris.com/images/imageproxy/small-things.jpg" alt="100,r90"></a>
+100,fv,fh | 100px square, flipped horizontal and vertical | <a href="https://imageproxy.willnorris.com/100,fv,fh/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/100,fv,fh/https://willnorris.com/images/imageproxy/small-things.jpg" alt="100,fv,fh"></a>
+200x,q60 | 200px wide, proportional height, 60% quality | <a href="https://imageproxy.willnorris.com/200x,q60/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/200x,q60/https://willnorris.com/images/imageproxy/small-things.jpg" alt="200x,q60"></a>
+200x,png | 200px wide, converted to PNG format | <a href="https://imageproxy.willnorris.com/200x,png/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/200x,png/https://willnorris.com/images/imageproxy/small-things.jpg" alt="200x,png"></a>
+cx175,cw400,ch300,100x | crop to 400x300px starting at (175,0), scale to 100px wide | <a href="https://imageproxy.willnorris.com/cx175,cw400,ch300,100x/https://willnorris.com/images/imageproxy/small-things.jpg"><img src="https://imageproxy.willnorris.com/cx175,cw400,ch300,100x/https://willnorris.com/images/imageproxy/small-things.jpg" alt="cx175,cw400,ch300,100x"></a>
 
 The [smart crop feature](https://godoc.org/willnorris.com/go/imageproxy#hdr-Smart_Crop)
 can best be seen by comparing crops of [this source image][judah-sheets], with
@@ -90,9 +88,9 @@ Options | Meaning                                  | Image
 Transformation also works on animated gifs.  Here is [this source
 image][material-animation] resized to 200px square and rotated 270 degrees:
 
-[material-animation]: https://willnorris.com/2015/05/material-animations.gif
+[material-animation]: https://willnorris.com/images/imageproxy/material-animations.gif
 
-<a href="https://imageproxy.willnorris.com/200,r270/https://willnorris.com/2015/05/material-animations.gif"><img src="https://imageproxy.willnorris.com/200,r270/https://willnorris.com/2015/05/material-animations.gif" alt="200,r270"></a>
+<a href="https://imageproxy.willnorris.com/200,r270/https://willnorris.com/images/imageproxy/material-animations.gif"><img src="https://imageproxy.willnorris.com/200,r270/https://willnorris.com/images/imageproxy/material-animations.gif" alt="200,r270"></a>
 
 ## Getting Started ##
 
@@ -142,7 +140,7 @@ enabled using the `-cache` flag.  It supports the following values:
 
        s3://fake-region/bucket/folder?endpoint=minio:9000&disableSSL=1&s3ForcePathStyle=1
 
-   Similarly, for [Digital Ocean Spaces](https://www.digitalocean.com/products/spaces/), 
+   Similarly, for [Digital Ocean Spaces](https://www.digitalocean.com/products/spaces/),
    provide a dummy region value and the appropriate endpoint for your space:
 
        s3://fake-region/bucket/folder?endpoint=sfo2.digitaloceanspaces.com
