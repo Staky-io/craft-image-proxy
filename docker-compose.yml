@@ -1,6 +1,9 @@
 version: '3'
 services:
   deployment:
+    mem_limit: 6144M
+    mem_reservation: 2048M
+    cpus: 1.5
     build:
       context: .
       dockerfile: Dockerfile
